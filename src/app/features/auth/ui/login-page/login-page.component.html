@@ -1,23 +1,41 @@
 <div class="container">
-    <div class="login-header">
-        <span></span>
-        <h1>Dev Planner</h1>
-        <mat-icon>security</mat-icon>
-    </div>
+    <header class="login-header">
+        <div class="header">
+            <span class="circle-header"></span>
+            <h1>Dev Planner</h1>
+        </div>
+        <mat-icon class="icon">security</mat-icon>
+    </header>
 
-    <h2>Fazer login</h2>
+    <h2 class="login-subtitle">Fazer login</h2>
 
-    <p>Entre para visualizar suas tarefas pendentes conosco!</p>
+    <p class="text-info">Acesse sua conta e organize suas tarefas acadêmicas e pessoais</p>
 
-    <form>
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Digite seu email">
+    <form class="forms">
+        <label for="email">Email:</label>
+        <input 
+            type="email"
+            id="email"
+            placeholder="Digite seu email"
+            required
+            autocomplete="email">
 
-        <label for="password">Senha</label>
-        <input type="password" id="password" placeholder="Digite sua senha">
+        <label for="password">Senha:</label>
+        <input 
+            type="password"
+            id="password"
+            placeholder="Digite sua senha"
+            required
+            autocomplete="current-password">
 
-        <button>Entrar</button>
+        <button class="btn-forms">
+            <mat-icon>login</mat-icon>
+            <span>Entrar</span>
+        </button>
     </form>
-    <a href="#">Esqueceu sua senha?</a>
-    <a href="#">Registrar-se</a>
+    
+    <nav class="links">
+        <a href="#">Esqueceu sua senha?</a>
+        <a routerLink="/register">Registrar-se</a>
+    </nav>
 </div>

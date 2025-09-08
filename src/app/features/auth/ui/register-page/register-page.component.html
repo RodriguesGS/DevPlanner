@@ -1,1 +1,55 @@
-<p>register-page works!</p>
+<div class="container">
+    <header class="register-header">
+        <div class="header">
+            <span class="circle-header"></span>
+            <h1>Dev Planner</h1>
+        </div>
+        <mat-icon class="icon">person_add</mat-icon>
+    </header>
+
+    <h2 class="login-subtitle">Registre-se</h2>
+
+    <p class="text-info">Novo por aqui? Registre-se e comece a organizar suas tarefas.</p>
+
+    <form class="forms">
+        <label for="fullName">Nome Completo</label>
+        <input 
+            type="text"
+            id="fullName"
+            placeholder="Digite seu nome completo"
+            required
+            >
+
+        <label for="email">Email:</label>
+        <input 
+            type="email"
+            id="email"
+            placeholder="Digite seu email"
+            required
+            autocomplete="email">
+
+        <label for="password">Senha:</label>
+        <input 
+            type="password"
+            id="password"
+            placeholder="Digite sua senha"
+            required
+            autocomplete="current-password">
+
+        <label for="confirmPassword">Confirmar senha:</label>
+        <input 
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirme sua senha"
+            required>
+
+        <button class="btn-forms">
+            <mat-icon>nat</mat-icon>
+            <span>Registrar-se</span>
+        </button>
+    </form>
+    
+    <nav class="links">
+        <a routerLink="/login">Já tem conta? Faça login</a>
+    </nav>
+</div>

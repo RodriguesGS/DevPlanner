@@ -1,0 +1,85 @@
+:host {
+    display: block;
+
+    .container {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        min-height: 100dvh;
+        color: #f1f1f1;
+        background: linear-gradient(180deg, #0b1220 0%, #0a0f19 60%, #090e16 100%);
+
+        .sidebar {
+            background: linear-gradient(180deg, #0e141f 0%, #0b1018 100%);
+            border-right: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(6px);
+            display: flex;
+            flex-direction: column;
+            padding: 16px 14px;
+            gap: 16px;
+
+            .brand {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                font-weight: 700;
+                padding-top: 10px;
+
+                .logo {
+                    display: inline-grid;
+                    place-items: center;
+                    border-radius: 8px;
+                    color: #5b8aff;
+                    font-weight:900;
+                    font-size: 1.5rem;
+                }
+
+                .brand-name {
+                    color: #f1f1f1;
+                    font-size: 1.5rem;
+                }
+            }
+
+            .menu {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                margin-top: 32px;
+
+                .item {
+                    display: flex;
+                    align-items: center;
+                    padding: 10px 20px;
+                    gap: 12px;
+                    border-radius: 8px;
+                    color: #c9d7f2;
+                    transition: .3s;
+
+                    &:hover {
+                        background: rgba(91,138,255,.12);
+                        color: #f1f1f1;
+                    }
+
+                    &.active {
+                        background: rgba(91,138,255,.15);
+                        border-left: 3px solid #5b8aff;
+                        color: #fff;
+                    }
+                }
+            }
+            
+            .quote {
+                margin-top: auto;
+                color: #98a8c7;
+                font-size: .9rem;
+                opacity: .8;
+                text-align: center;
+                
+            }
+        }
+    }
+
+    .content {
+        padding: 20px 28px;
+    }
+}

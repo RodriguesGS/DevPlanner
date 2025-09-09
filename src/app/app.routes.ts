@@ -16,5 +16,21 @@ export const routes: Routes = [
         path: 'recover-password',  
         loadComponent: () => import('./features/auth/ui/forgot-password/forgot-password.component')
             .then((m) => m.ForgotPasswordComponent), 
-        title: "Dev Planner | Recuperar senha" }
+        title: "Dev Planner | Recuperar senha" 
+    },
+
+    {
+        path: '',
+        loadComponent: () => import('./core/layouts/app-shell/app-shell.component')
+            .then((m) => m.AppShellComponent),
+        children: [
+            {
+                path: 'dashboard',
+                loadComponent: () => import('./features/dashboard/ui/dashboard-page/dashboard-page.component')
+                    .then((m) => m.DashboardPageComponent),
+                title: "Dev Planner | Dashboard" 
+            }
+        ]
+
+    }
 ];

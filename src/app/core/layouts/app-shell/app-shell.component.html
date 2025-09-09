@@ -1,0 +1,29 @@
+<div class="container">
+    <aside class="sidebar">
+        <div class="brand">
+            <mat-icon class="logo">task_alt</mat-icon>
+            <span class="brand-name">Dev Planner</span>
+        </div>
+
+        <nav class="menu">
+            <a routerLink="/dashboard" class="item active">
+                <mat-icon>dashboard</mat-icon>
+                <span>Dashboard</span>
+            </a>
+            <a routerLink="/tasks" class="item">
+                <mat-icon>view_kanban</mat-icon>
+                <span>Tarefas</span>
+            </a>
+            <a routerLink="/calendar" class="item">
+                <mat-icon>event</mat-icon>
+                <span>Calendario</span>
+            </a>
+        </nav>
+
+        <p class="quote">“You attract what you are, not what you want.”</p>
+    </aside>
+
+    <main class="content">
+        <router-outlet/>
+    </main>
+</div>

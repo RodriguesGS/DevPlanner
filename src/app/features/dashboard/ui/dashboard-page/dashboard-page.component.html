@@ -1,1 +1,66 @@
-<p>dashboard-page works!</p>
+<div class="topbar">
+  <h2 class="title">Dashboard</h2>
+  <button class="btn">Atualizar</button>
+</div>
+
+<section class="kpis">
+  <article class="kpi-card">
+    <div class="kpi-num">{{ facade.total() }}</div>
+    <div class="kpi-text">Tarefas</div>
+  </article>
+
+  <article class="kpi-card">
+    <div class="kpi-num">{{ facade.doneThisWeek() }}</div>
+    <div class="kpi-text">Concluídas (7d)</div>
+  </article>
+  
+  <article class="kpi-card">
+    <div class="kpi-num">{{ facade.overdue() }}</div>
+    <div class="kpi-text">Atrasadas</div>
+  </article>
+</section>
+
+<section class="charts">
+  <article class="card chart-wide">
+    <span class="card-head">
+      <h3>Concluídas por dia</h3>
+    </span>
+
+    <apx-chart
+      [series]="facade.velocity()"
+      [chart]="{ type: 'area', height: 320 }"
+      [xaxis]="{ categories: facade.days, axisBorder:{show:false}, axisTicks:{show:false} }"
+      [yaxis]="areaYAxis"
+      [stroke]="{ curve:'smooth', width: 2 }"
+      [fill]="{ type:'gradient', gradient:{ shadeIntensity:.6, opacityFrom:.35, opacityTo:.06, stops:[0,80,100] } }"
+    />
+  </article>
+
+  <div class="chart-inline">
+    <article class="card">
+      <span class="card-head">
+        <h3>Status Atual</h3>
+      </span>
+
+      <apx-chart
+        [series]="facade.byStatus()"
+        [chart]="{ type:'donut', height: 280 }"
+        [labels]="['Backlog','Dev','Validação','Finalizado']"
+        [plotOptions]="donutPlotOptions!"
+      />
+    </article>
+
+    <article class="card">
+      <span class="card-head">
+        <h3>Atrasadas</h3>
+      </span>
+
+      <apx-chart
+        [series]="facade.byPriority()"
+        [chart]="{ type:'bar', height: 280 }"
+        [xaxis]="{ categories: ['Baixa','Média','Alta'], axisBorder:{show:false}, axisTicks:{show:false} }"
+        [plotOptions]="{ bar: { borderRadius: 10, columnWidth: '44%' } }"
+      />
+    </article>
+  </div>
+</section>

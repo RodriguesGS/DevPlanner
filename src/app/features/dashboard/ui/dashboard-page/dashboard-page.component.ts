@@ -1,11 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { DashboardFacade } from '../../facade/dashboard.facade';
+import { ApexOptions, NgApexchartsModule } from 'ng-apexcharts';
 
 @Component({
   selector: 'app-dashboard-page',
-  imports: [],
+  imports: [
+    NgApexchartsModule
+  ],
   templateUrl: './dashboard-page.component.html',
   styleUrl: './dashboard-page.component.scss'
 })
-export class DashboardPageComponent {
+export class DashboardPageComponent implements OnInit{
+  facade = inject(DashboardFacade)
 
+  areaYAxis: ApexYAxis = {
+    labels: {
+      formatter: (val: number) => (Number.isInteger(val) ? String(val) : '')
+    }
+  };
+
+    donutPlotOptions: ApexOptions['plotOptions'] = {
+    pie: {
+      donut: {
+        size: '68%',
+        labels: {
+          show: true,
+          total: {
+            show: true,
+            label: 'Total',
+            formatter: () => String(this.facade.total()),
+          },
+        },
+      },
+    },
+  };
+
+  ngOnInit(): void {
+      this.facade.load()
+  }
 }

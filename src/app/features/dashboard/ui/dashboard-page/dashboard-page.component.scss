@@ -1,0 +1,117 @@
+:host {
+  display: block;
+  padding: 16px 28px;
+
+  .topbar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    margin: 6px 0 18px;
+
+    .title {
+      letter-spacing: 0.2px;
+      font-size: 2.4rem;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 10%;
+        height: 4px;
+        background: linear-gradient(90deg, #5b8aff, #36d1ff);
+      }
+    }
+
+    .btn {
+      background: linear-gradient(180deg, #ffffff14, #ffffff0d);
+      padding: 10px 20px;
+      border-radius: 12px;
+      border: 1px solid #ffffff1f;
+      font-weight: 600;
+      backdrop-filter: blur(8px);
+      color: #f1f1f1;
+
+      &:hover {
+        background: linear-gradient(90deg, #5b8aff, #36d1ff);
+        color: #0b0f14;
+        border-color: transparent;
+        box-shadow: 0 10px 24px rgba(91, 138, 255, 0.28);
+        transform: translateY(-1px);
+        transition: 0.3s;
+      }
+    }
+  }
+
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(12px, 2.4vw, 20px);
+    margin: 6px 0 clamp(12px, 2.6vw, 20px);
+
+    .kpi-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: clamp(14px, 2.2vw, 20px);
+      backdrop-filter: blur(10px);
+      display: grid;
+      gap: 6px;
+      transition: 0.2s ease;
+
+      .kpi-num {
+        font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+        font-weight: 800;
+      }
+
+      .kpi-text {
+        color: #9db0cf;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.05);
+        transform: translateY(-1px);
+      }
+    }
+  }
+
+  .charts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(12px, 2.4vw, 20px);
+
+    .chart-wide {
+      grid-column: 1 / -1;
+    }
+
+    .card {
+      background: linear-gradient( 180deg,rgba(255, 255, 255, 0.06),rgba(255, 255, 255, 0.045));
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      padding: clamp(12px, 2vw, 18px);
+      backdrop-filter: blur(8px);
+      transition: 0.2s ease;
+
+      &:hover {
+        border-color: color-mix(in srgb, #5b8aff 26%, rgba(255,255,255,.12));
+      }
+
+      .card-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        h3 {
+          margin: 0;
+          font-size: 1rem;
+          font-weight: 700;
+          color: #dfe8ff;
+        }
+      }
+    }
+
+    .chart-inline {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(12px, 2.4vw, 20px);
+    }
+  }
+}

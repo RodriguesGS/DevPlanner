@@ -80,6 +80,67 @@
     }
 
     .content {
-        padding: 20px 28px;
+        padding: 20px 30px;
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .search-bar {
+                display: flex;
+                align-items: center;
+                background-color: #fff;
+                padding: 8px 12px;
+                border-radius: 8px;
+                min-width: 400px;
+                transition: .3s;
+
+                &:hover {
+                    background-color: #ddd;
+                    
+                    .search {
+                        transition: .3s;
+                        background-color: #ddd;
+                    }
+                }
+
+                &:focus-within {
+                    background-color: #ddd;
+                    
+                    .search {
+                        transition: .3s;
+                        background-color: #ddd;
+                    }
+                }
+
+                .search {
+                    flex: 1;
+                    border: none;
+                    outline: none;
+                    font-size: 1rem;
+                    color: #333;
+                    transition: .3s;
+                }
+
+                .icon {
+                    color: #a5a5a5;
+                    font-size: 1.5rem;
+                    margin-left: 8px;
+                    cursor: pointer;
+                }
+            }
+
+            .icons-info {
+                display: flex;
+                gap: 5px;
+                color: #4a4a4a;
+
+                .active-page {
+                    color: #5b8aff;
+                    font-weight: 700;
+                }
+            }
+        }
     }
 }

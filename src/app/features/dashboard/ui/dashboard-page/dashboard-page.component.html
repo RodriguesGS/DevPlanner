@@ -5,7 +5,7 @@
 
 <section class="kpis">
   <article class="kpi-card">
-    <div class="kpi-num">{{ facade.total() }}</div>
+    <div class="kpi-num" aria-readonly="true">{{ facade.total() }}</div>
     <div class="kpi-text">Tarefas</div>
   </article>
 
@@ -13,7 +13,7 @@
     <div class="kpi-num">{{ facade.doneThisWeek() }}</div>
     <div class="kpi-text">Concluídas (7d)</div>
   </article>
-  
+
   <article class="kpi-card">
     <div class="kpi-num">{{ facade.overdue() }}</div>
     <div class="kpi-text">Atrasadas</div>
@@ -28,11 +28,24 @@
 
     <apx-chart
       [series]="facade.velocity()"
-      [chart]="{ type: 'area', height: 320 }"
-      [xaxis]="{ categories: facade.days, axisBorder:{show:false}, axisTicks:{show:false} }"
+      [chart]="{ type: 'area', height: 320, toolbar: { show: false } }"
+      [xaxis]="{
+        categories: facade.days,
+        axisBorder: { show: false },
+        axisTicks: { show: false }
+      }"
+      [grid]="{ show:false }" 
       [yaxis]="areaYAxis"
-      [stroke]="{ curve:'smooth', width: 2 }"
-      [fill]="{ type:'gradient', gradient:{ shadeIntensity:.6, opacityFrom:.35, opacityTo:.06, stops:[0,80,100] } }"
+      [stroke]="{ curve: 'smooth', width: 2 }"
+      [fill]="{
+        type: 'gradient',
+        gradient: {
+          shadeIntensity: 0.6,
+          opacityFrom: 0.35,
+          opacityTo: 0.06,
+          stops: [0, 80, 100]
+        }
+      }"
     />
   </article>
 
@@ -44,21 +57,29 @@
 
       <apx-chart
         [series]="facade.byStatus()"
-        [chart]="{ type:'donut', height: 280 }"
-        [labels]="['Backlog','Dev','Validação','Finalizado']"
+        [chart]="{ type: 'donut', height: 280 }"
+        [labels]="['Backlog', 'Dev', 'Validação', 'Finalizado']"
+        [grid]="{ show:false }" 
+        [colors]="['#4F7BFE', '#35D0C8', '#FFB020', '#F95F7F']"
+        [stroke]="{ width: 0}"
         [plotOptions]="donutPlotOptions!"
       />
     </article>
 
     <article class="card">
       <span class="card-head">
-        <h3>Atrasadas</h3>
+        <h3>Por Prioridade</h3>
       </span>
 
       <apx-chart
         [series]="facade.byPriority()"
-        [chart]="{ type:'bar', height: 280 }"
-        [xaxis]="{ categories: ['Baixa','Média','Alta'], axisBorder:{show:false}, axisTicks:{show:false} }"
+        [chart]="{ type: 'bar', height: 280 }"
+        [xaxis]="{
+          categories: ['Baixa', 'Média', 'Alta'],
+          axisBorder: { show: false },
+          axisTicks: { show: false }
+        }"
+        [grid]="{ show:false }" 
         [plotOptions]="{ bar: { borderRadius: 10, columnWidth: '44%' } }"
       />
     </article>

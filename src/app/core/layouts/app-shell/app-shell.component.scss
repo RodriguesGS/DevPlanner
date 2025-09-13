@@ -1,146 +1,144 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as mixins;
+
 :host {
-    display: block;
+  display: block;
 
-    .container {
-        display: grid;
-        grid-template-columns: 260px 1fr;
-        min-height: 100dvh;
-        color: #f1f1f1;
-        background: linear-gradient(180deg, #0b1220 0%, #0a0f19 60%, #090e16 100%);
+  .container {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 100dvh;
+    color: $white;
+    background: linear-gradient(180deg, #0b1220 0%, #0a0f19 60%, #090e16 100%);
+    padding-right: 15px;
 
-        .sidebar {
-            background: linear-gradient(180deg, #0e141f 0%, #0b1018 100%);
-            border-right: 1px solid rgba(255,255,255,0.05);
-            backdrop-filter: blur(6px);
-            display: flex;
-            flex-direction: column;
-            padding: 16px 14px;
-            gap: 16px;
+    .sidebar {
+      position: sticky;
+      height: 100dvh;
+      top: 0;
+      background: linear-gradient(180deg, #0e141f 0%, #0b1018 100%);
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(6px);
+      display: flex;
+      flex-direction: column;
+      padding: 16px 14px;
+      gap: 16px;
 
-            .brand {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 10px;
-                font-weight: 700;
-                padding-top: 10px;
+      .brand {
+        @include mixins.flex-center;
+        gap: 10px;
+        font-weight: 700;
+        padding-top: 10px;
 
-                .logo {
-                    display: inline-grid;
-                    place-items: center;
-                    border-radius: 8px;
-                    color: #5b8aff;
-                    font-weight:900;
-                    font-size: 1.5rem;
-                }
-
-                .brand-name {
-                    color: #f1f1f1;
-                    font-size: 1.5rem;
-                }
-            }
-
-            .menu {
-                display: flex;
-                flex-direction: column;
-                gap: 6px;
-                margin-top: 32px;
-
-                .item {
-                    display: flex;
-                    align-items: center;
-                    padding: 10px 20px;
-                    gap: 12px;
-                    border-radius: 8px;
-                    color: #c9d7f2;
-                    transition: .3s;
-
-                    &:hover {
-                        background: rgba(91,138,255,.12);
-                        color: #f1f1f1;
-                    }
-
-                    &.active {
-                        background: rgba(91,138,255,.15);
-                        border-left: 3px solid #5b8aff;
-                        color: #fff;
-                    }
-                }
-            }
-            
-            .quote {
-                margin-top: auto;
-                color: #98a8c7;
-                font-size: .9rem;
-                opacity: .8;
-                text-align: center;
-                
-            }
+        .logo {
+          color: $primary-color;
+          font-weight: 900;
         }
-    }
 
-    .content {
-        padding: 20px 30px;
+        .brand-name { font-size: 1.5rem; }
+      }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+      .menu {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-top: 32px;
 
-            .search-bar {
-                display: flex;
-                align-items: center;
-                background-color: #fff;
-                padding: 8px 12px;
-                border-radius: 8px;
-                min-width: 400px;
-                transition: .3s;
+        .item {
+          display: flex;
+          align-items: center;
+          padding: 10px 20px;
+          gap: 12px;
+          border-radius: 8px;
+          color: $gray;
+          transition: .3s;
 
-                &:hover {
-                    background-color: #ddd;
-                    
-                    .search {
-                        transition: .3s;
-                        background-color: #ddd;
-                    }
-                }
+          &:hover {
+            background: #5b8aff1f;
+            color: $white;
+          }
 
-                &:focus-within {
-                    background-color: #ddd;
-                    
-                    .search {
-                        transition: .3s;
-                        background-color: #ddd;
-                    }
-                }
-
-                .search {
-                    flex: 1;
-                    border: none;
-                    outline: none;
-                    font-size: 1rem;
-                    color: #333;
-                    transition: .3s;
-                }
-
-                .icon {
-                    color: #a5a5a5;
-                    font-size: 1.5rem;
-                    margin-left: 8px;
-                    cursor: pointer;
-                }
-            }
-
-            .icons-info {
-                display: flex;
-                gap: 5px;
-                color: #4a4a4a;
-
-                .active-page {
-                    color: #5b8aff;
-                    font-weight: 700;
-                }
-            }
+          &.active {
+            background: #5b8aff26;
+            border-left: 3px solid $btn-primary;
+            color: $white;
+          }
         }
+      }
+
+      .quote {
+        margin-top: auto;
+        color: #98a8c7;
+        font-size: .9rem;
+        opacity: .8;
+        text-align: center;
+      }
     }
+  }
+
+  .content {
+    padding: 20px 30px;
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 16px;
+
+      .search-bar {
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        padding: 8px 12px;
+        border-radius: 8px;
+        min-width: 400px;
+        transition: .3s;
+
+        &:hover {
+          background-color: $gray;
+
+          .search {
+            transition: .3s;
+            background-color: $gray;
+          }
+        }
+
+        &:focus-within {
+          background-color: $gray;
+
+          .search {
+            transition: .3s;
+            background-color: $gray;
+          }
+        }
+
+        .search {
+          flex: 1;
+          border: none;
+          outline: none;
+          font-size: 1rem;
+          color: $black-text;
+          transition: .3s;
+        }
+
+        .icon {
+          color: #a5a5a5;
+          font-size: 1.5rem;
+          margin-left: 8px;
+          cursor: pointer;
+        }
+      }
+
+      .icons-info {
+        display: flex;
+        gap: 5px;
+        color: #4a4a4a;
+
+        .active-page {
+          color: $primary-color;
+          font-weight: 700;
+        }
+      }
+    }
+  }
 }

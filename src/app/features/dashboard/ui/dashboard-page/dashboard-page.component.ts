@@ -4,31 +4,31 @@ import { ApexOptions, NgApexchartsModule } from 'ng-apexcharts';
 
 @Component({
   selector: 'app-dashboard-page',
-  imports: [
-    NgApexchartsModule
-  ],
+  imports: [NgApexchartsModule],
   templateUrl: './dashboard-page.component.html',
-  styleUrl: './dashboard-page.component.scss'
+  styleUrl: './dashboard-page.component.scss',
 })
-export class DashboardPageComponent implements OnInit{
-  facade = inject(DashboardFacade)
+export class DashboardPageComponent implements OnInit {
+  facade = inject(DashboardFacade);
 
   areaYAxis: ApexYAxis = {
     labels: {
-      formatter: (val: number) => (Number.isInteger(val) ? String(val) : '')
-    }
+      formatter: (val: number) => (Number.isInteger(val) ? String(val) : ''),
+    },
   };
 
-    donutPlotOptions: ApexOptions['plotOptions'] = {
+  donutPlotOptions: ApexOptions['plotOptions'] = {
     pie: {
       donut: {
-        size: '68%',
+        size: '70%',
         labels: {
           show: true,
           total: {
             show: true,
             label: 'Total',
-            formatter: () => String(this.facade.total()),
+            fontSize: '12px',
+            color: '#9DB0CF',
+            formatter: () => String(this.facade.total())
           },
         },
       },
@@ -36,6 +36,6 @@ export class DashboardPageComponent implements OnInit{
   };
 
   ngOnInit(): void {
-      this.facade.load()
+    this.facade.load();
   }
 }

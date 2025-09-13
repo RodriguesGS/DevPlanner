@@ -1,41 +1,38 @@
+@use "../../../../styles/variables" as *;
+@use "../../../../styles/mixins" as mixins;
+
 :host {
   display: block;
-  padding: 16px 28px;
+  margin-top: 80px;
 
   .topbar {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    margin: 6px 0 18px;
+    display: flex;
+    justify-content: space-between;
 
     .title {
-      letter-spacing: 0.2px;
+      letter-spacing: .2px;
       font-size: 2.4rem;
 
       &::after {
         content: "";
         display: block;
-        width: 10%;
+        width: 60%;
         height: 4px;
-        background: linear-gradient(90deg, #5b8aff, #36d1ff);
+        background: linear-gradient(90deg, $btn-primary, $btn-secondary);
       }
     }
 
     .btn {
       background: linear-gradient(180deg, #ffffff14, #ffffff0d);
-      padding: 10px 20px;
-      border-radius: 12px;
+      padding: 0 20px;
+      border-radius: 8px;
       border: 1px solid #ffffff1f;
-      font-weight: 600;
       backdrop-filter: blur(8px);
-      color: #f1f1f1;
+      color: $white;
 
       &:hover {
-        background: linear-gradient(90deg, #5b8aff, #36d1ff);
-        color: #0b0f14;
+        background: $btn-primary;
         border-color: transparent;
-        box-shadow: 0 10px 24px rgba(91, 138, 255, 0.28);
-        transform: translateY(-1px);
-        transition: 0.3s;
       }
     }
   }
@@ -43,31 +40,27 @@
   .kpis {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(12px, 2.4vw, 20px);
-    margin: 6px 0 clamp(12px, 2.6vw, 20px);
+    gap: 24px;
+    margin: 40px 0;
+    user-select: none;
 
     .kpi-card {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: #ffffff0f;
+      border: 1px solid #ffffff1f;
       border-radius: 16px;
-      padding: clamp(14px, 2.2vw, 20px);
-      backdrop-filter: blur(10px);
-      display: grid;
-      gap: 6px;
-      transition: 0.2s ease;
+      padding: 20px 24px;
+      transition: .2s;
 
       .kpi-num {
-        font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+        font-size: 2.6rem;
         font-weight: 800;
       }
 
-      .kpi-text {
-        color: #9db0cf;
-      }
+      .kpi-text { color: $dark-gray; }
 
       &:hover {
         background: rgba(255, 255, 255, 0.05);
-        transform: translateY(-1px);
+        transform: translateY(-3px);
       }
     }
   }
@@ -75,43 +68,35 @@
   .charts {
     display: grid;
     grid-template-columns: 1fr;
-    gap: clamp(12px, 2.4vw, 20px);
+    gap: 30px;
 
-    .chart-wide {
-      grid-column: 1 / -1;
-    }
+    .chart-wide { grid-column: 1 / -1; }
 
     .card {
-      background: linear-gradient( 180deg,rgba(255, 255, 255, 0.06),rgba(255, 255, 255, 0.045));
-      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient( 180deg,#ffffff0f, #ffffff0b);
+      border: 1px solid #ffffff1f;
       border-radius: 16px;
-      padding: clamp(12px, 2vw, 18px);
-      backdrop-filter: blur(8px);
-      transition: 0.2s ease;
+      padding: 18px;
+      transition: .2s;
+      user-select: none;
 
       &:hover {
-        border-color: color-mix(in srgb, #5b8aff 26%, rgba(255,255,255,.12));
+        border-color: $btn-primary;
+        transform: translateY(-5px);
       }
 
-      .card-head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 10px;
-
-        h3 {
-          margin: 0;
-          font-size: 1rem;
-          font-weight: 700;
-          color: #dfe8ff;
-        }
+      h3 {
+        color: $white;
+        font-size: 1.2rem;
+        font-weight: 700;
+        padding-bottom: 20px;
       }
     }
 
     .chart-inline {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: clamp(12px, 2.4vw, 20px);
+      gap: 20px;
     }
   }
 }

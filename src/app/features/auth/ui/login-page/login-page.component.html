@@ -1,41 +1,45 @@
 <div class="container">
-    <header class="login-header">
-        <div class="header">
-            <span class="circle-header"></span>
-            <h1>Dev Planner</h1>
-        </div>
-        <mat-icon class="icon">security</mat-icon>
-    </header>
+  <header class="login-header">
+    <div class="header">
+      <span class="circle-header"></span>
+      <h1>Dev Planner</h1>
+    </div>
+    <mat-icon class="icon">security</mat-icon>
+  </header>
 
-    <h2 class="login-subtitle">Fazer login</h2>
+  <h2 class="login-subtitle">Fazer login</h2>
 
-    <p class="text-info">Acesse sua conta e organize suas tarefas acadêmicas e pessoais</p>
+  <p class="text-info">
+    Acesse sua conta e organize suas tarefas acadêmicas e pessoais
+  </p>
 
-    <form class="forms">
-        <label for="email">Email:</label>
-        <input 
-            type="email"
-            id="email"
-            placeholder="Digite seu email"
-            required
-            autocomplete="email">
+  <form class="forms">
+    <label for="email">Email:</label>
+    <input
+      type="email"
+      id="email"
+      placeholder="Digite seu email"
+      required
+      autocomplete="email"
+    />
 
-        <label for="password">Senha:</label>
-        <input 
-            type="password"
-            id="password"
-            placeholder="Digite sua senha"
-            required
-            autocomplete="current-password">
+    <label for="password">Senha:</label>
+    <input
+      type="password"
+      id="password"
+      placeholder="Digite sua senha"
+      required
+      autocomplete="current-password"
+    />
 
-        <button type="button" routerLink="/dashboard" class="btn-forms">
-            <mat-icon>login</mat-icon>
-            <span>Entrar</span>
-        </button>
-    </form>
-    
-    <nav class="links">
-        <a routerLink="/recover-password">Esqueceu sua senha?</a>
-        <a routerLink="/register">Registrar-se</a>
-    </nav>
+    <button type="button" routerLink="/dashboard" class="btn-forms">
+      <mat-icon>login</mat-icon>
+      <span>Entrar</span>
+    </button>
+  </form>
+
+  <nav class="links">
+    <a routerLink="/recover-password">Esqueceu sua senha?</a>
+    <a routerLink="/register">Registrar-se</a>
+  </nav>
 </div>

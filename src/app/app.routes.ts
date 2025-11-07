@@ -42,6 +42,15 @@ export const routes: Routes = [
           ).then((m) => m.DashboardPageComponent),
         title: 'Dev Planner | Dashboard',
       },
+
+      {
+        path: 'tasks',
+        loadComponent: () =>
+          import(
+            './features/tasks/ui/task-page/task-page.component'
+          ).then((m) => m.TaskPageComponent),
+        title: 'Dev Planner | Tarefas'
+      }
     ],
   },
 ];

@@ -1,0 +1,117 @@
+<div class="toolbar">
+  <input
+    #searchInput
+    class="search"
+    type="text"
+    placeholder="Pesquisar tarefas..."
+    [value]="search()"
+    (input)="search.set(searchInput.value)"
+    />
+
+
+  <button class="btn" (click)="reload()">Criar Tarefa</button>
+</div>
+
+<div cdkDropListGroup class="board">
+  <section class="column">
+    <header>
+      <h3>Backlog</h3>
+      <span class="count">{{ backlog().length }}</span>
+    </header>
+
+    <div
+      class="list"
+      cdkDropList
+      [cdkDropListData]="backlog()"
+      (cdkDropListDropped)="onDrop($event, 'BACKLOG')"
+      [cdkDropListConnectedTo]="[ids.DEV]"
+    >
+      <article class="card" *ngFor="let t of backlog(); trackBy: trackById" cdkDrag>
+        <div class="title">{{ t.title }}</div>
+        <div class="meta">
+          <span class="pill" [style.background]="priorityColor(t.priority)">
+            {{ t.priority }}
+          </span>
+          <span class="due" *ngIf="t.dueDate">Até {{ t.dueDate | date:'dd/MM' }}</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="column">
+    <header>
+      <h3>Em Desenvolvimento</h3>
+      <span class="count">{{ dev().length }}</span>
+    </header>
+
+    <div
+      class="list"
+      cdkDropList
+      [cdkDropListData]="dev()"
+      (cdkDropListDropped)="onDrop($event, 'DEV')"
+      [cdkDropListConnectedTo]="[ids.BACKLOG, ids.VALIDACAO]"
+    >
+      <article class="card" *ngFor="let t of dev(); trackBy: trackById" cdkDrag>
+        <div class="title">{{ t.title }}</div>
+        <div class="meta">
+          <span class="pill" [style.background]="priorityColor(t.priority)">
+            {{ t.priority }}
+          </span>
+          <span class="due" *ngIf="t.dueDate">Até {{ t.dueDate | date:'dd/MM' }}</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="column">
+    <header>
+      <h3>Validação</h3>
+      <span class="count">{{ review().length }}</span>
+    </header>
+
+    <div
+      class="list"
+      cdkDropList
+      [cdkDropListData]="review()"
+      (cdkDropListDropped)="onDrop($event, 'VALIDACAO')"
+      [cdkDropListConnectedTo]="[ids.DEV, ids.FINALIZADO]"
+    >
+      <article class="card" *ngFor="let t of review(); trackBy: trackById" cdkDrag>
+        <div class="title">{{ t.title }}</div>
+        <div class="meta">
+          <span class="pill" [style.background]="priorityColor(t.priority)">
+            {{ t.priority }}
+          </span>
+          <span class="due" *ngIf="t.dueDate">Até {{ t.dueDate | date:'dd/MM' }}</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="column">
+    <header>
+      <h3>Finalizado</h3>
+      <span class="count">{{ done().length }}</span>
+    </header>
+
+    <div
+      class="list"
+      cdkDropList
+      [cdkDropListData]="done()"
+      (cdkDropListDropped)="onDrop($event, 'FINALIZADO')"
+      [cdkDropListConnectedTo]="[ids.VALIDACAO]"
+    >
+      <article class="card done" *ngFor="let t of done(); trackBy: trackById" cdkDrag>
+        <div class="title">{{ t.title }}</div>
+        <div class="meta">
+          <span class="pill" [style.background]="priorityColor(t.priority)">
+            {{ t.priority }}
+          </span>
+          <span class="due" *ngIf="t.completedAt">
+            Concluída {{ t.completedAt | date:'dd/MM' }}
+          </span>
+        </div>
+      </article>
+    </div>
+  </section>
+</div>

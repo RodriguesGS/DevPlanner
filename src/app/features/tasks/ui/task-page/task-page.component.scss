@@ -127,4 +127,152 @@
   @media (max-width: 680px) {
     .board { grid-template-columns: 1fr; }
   }
+
+  // Modal Styles
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease;
+  }
+
+  .modal-content {
+    background: linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.06));
+    border: 1px solid var(--stroke);
+    border-radius: 16px;
+    padding: 24px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.3s ease;
+
+    h2 {
+      margin: 0 0 20px 0;
+      color: var(--text);
+      font-size: 24px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
+      label {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      input, textarea, select {
+        background: rgba(255,255,255,.04);
+        border: 1px solid var(--stroke);
+        color: var(--text);
+        padding: 10px 12px;
+        border-radius: 8px;
+        outline: none;
+        transition: .2s;
+        font-family: inherit;
+
+        &::placeholder {
+          color: var(--muted);
+        }
+
+        &:focus {
+          border-color: var(--brand1);
+          background: rgba(255,255,255,.06);
+        }
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+
+      select {
+        cursor: pointer;
+      }
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+
+      @media (max-width: 500px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+      justify-content: flex-end;
+
+      button {
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: .2s;
+        border: none;
+        font-size: 14px;
+      }
+
+      .btn-cancel {
+        background: rgba(255,255,255,.06);
+        border: 1px solid var(--stroke);
+        color: var(--text);
+
+        &:hover {
+          background: rgba(255,255,255,.1);
+        }
+      }
+
+      .btn-submit {
+        background: linear-gradient(90deg, var(--brand1), #36d1ff);
+        color: #0b0f14;
+        border: none;
+
+        &:hover {
+          box-shadow: 0 8px 20px rgba(91,138,255,.3);
+          transform: translateY(-1px);
+        }
+      }
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

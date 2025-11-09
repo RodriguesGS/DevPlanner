@@ -28,7 +28,7 @@ export class DashboardPageComponent implements OnInit {
             label: 'Total',
             fontSize: '12px',
             color: '#9DB0CF',
-            formatter: () => String(this.facade.total())
+            formatter: () => String(this.facade.total()),
           },
         },
       },

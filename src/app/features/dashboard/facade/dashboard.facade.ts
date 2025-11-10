@@ -1,10 +1,10 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { TaskMock } from '../../../data/data.mock.repository';
+import { TaskService } from '../../../services/task.service';
 import { Task } from '../../../models/model.task';
 
 @Injectable({ providedIn: 'root' })
 export class DashboardFacade {
-  private repository = inject(TaskMock);
+  private taskService = inject(TaskService);
   private tasksSig = signal<Task[]>([]);
 
   tasks = this.tasksSig.asReadonly();
@@ -12,7 +12,7 @@ export class DashboardFacade {
   days = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'];
 
   async load() {
-    this.tasksSig.set(await this.repository.listAll());
+    this.tasksSig.set(await this.taskService.listAll());
   }
 
   total = computed(() => this.tasks().length);

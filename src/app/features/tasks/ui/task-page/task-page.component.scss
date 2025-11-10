@@ -112,7 +112,6 @@
     &.done { opacity: .9; }
   }
 
-  // estados de drag
   ::ng-deep .cdk-drag-preview {
     box-shadow: 0 10px 24px rgba(0,0,0,.35);
     border-radius: 12px;
@@ -128,7 +127,6 @@
     .board { grid-template-columns: 1fr; }
   }
 
-  // Modal Styles
   .modal-overlay {
     position: fixed;
     top: 0;

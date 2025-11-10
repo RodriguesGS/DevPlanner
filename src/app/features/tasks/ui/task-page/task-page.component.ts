@@ -28,7 +28,6 @@ export class TaskPageComponent {
   search = signal('');
   selectedProject = signal<string | null>(null);
 
-  // Form fields for new task
   showCreateModal = signal(false);
   newTaskTitle = '';
   newTaskDescription = '';
@@ -88,7 +87,6 @@ export class TaskPageComponent {
 
     const moved: Task = e.container.data[e.currentIndex];
 
-    // Update task status via API
     try {
       await firstValueFrom(
         this.taskService.updateTask(moved.id, { status: to })
@@ -99,7 +97,6 @@ export class TaskPageComponent {
       );
     } catch (error) {
       console.error('Error updating task status:', error);
-      // Revert the change in UI
       await this.reload();
     }
   }

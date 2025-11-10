@@ -1,4 +1,3 @@
-// In-memory database for tasks
 let tasks = [
   {
     id: 't1',
